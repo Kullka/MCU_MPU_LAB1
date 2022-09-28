@@ -200,30 +200,62 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+    clearAllClock();
+    int sec = 0, min = 0;
+    int ledSec = 0, ledMin = 0, ledHour = 0;
     /* USER CODE END 2 */
-
-
 
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
-      int counter = 0;
-      setAllClock();
-      while (1)
-      {
-      	if (counter>=12)	{
-      		counter=0;
-      		setAllClock();
+    while (1) {
+      	clearAllClock();
+      	if (ledSec==0 || ledMin==0 || ledHour==0)
+      		setNumberOnClock(0);
+      	if (ledSec==1 || ledMin==1 || ledHour==1)
+      	    setNumberOnClock(1);
+      	if (ledSec==2 || ledMin==2 || ledHour==2)
+      	    setNumberOnClock(2);
+      	if (ledSec==3 || ledMin==3 || ledHour==3)
+      	    setNumberOnClock(3);
+      	if (ledSec==4 || ledMin==4 || ledHour==4)
+      	    setNumberOnClock(4);
+      	if (ledSec==5 || ledMin==5 || ledHour==5)
+      	    setNumberOnClock(5);
+      	if (ledSec==6 || ledMin==6 || ledHour==6)
+      	    setNumberOnClock(6);
+      	if (ledSec==7 || ledMin==7 || ledHour==7)
+      	    setNumberOnClock(7);
+      	if (ledSec==8 || ledMin==8 || ledHour==8)
+      	    setNumberOnClock(8);
+      	if (ledSec==9 || ledMin==9 || ledHour==9)
+      	    setNumberOnClock(9);
+      	if (ledSec==10 || ledMin==10 || ledHour==10)
+      	    setNumberOnClock(10);
+      	if (ledSec==11 || ledMin==11 || ledHour==11)
+      	    setNumberOnClock(11);
+
+      	sec++;
+      	if (sec%5==0)	ledSec++;
+      	ledSec = ledSec%12;
+      	if (sec==60) {
+      		min++;
+      		sec = 0;
+      		if (min%5==0)	ledMin++;
+      		ledMin = ledMin%12;
+      		if (min==60) {
+      			ledHour++;
+      			ledHour = ledHour%12;
+     	    		min = 0;
+   		   	}
       	}
-      	clearNumberOnClock(counter);
-      	counter++;
+
       	HAL_Delay(1000);
       /* USER CODE END WHILE */
 
       /* USER CODE BEGIN 3 */
       }
     /* USER CODE END 3 */
-}
+  }
 
 /**
   * @brief System Clock Configuration
