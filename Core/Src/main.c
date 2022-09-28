@@ -110,6 +110,65 @@ void clearAllClock() {
 	HAL_GPIO_WritePin(_10_GPIO_Port, _10_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(_11_GPIO_Port, _11_Pin, GPIO_PIN_SET);
 }
+
+void clearNumberOnClock(int num) {
+	switch (num) {
+	case 0:
+		HAL_GPIO_WritePin(_0_GPIO_Port, _0_Pin, GPIO_PIN_SET);
+		break;
+	case 1:
+		HAL_GPIO_WritePin(_1_GPIO_Port, _1_Pin, GPIO_PIN_SET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(_2_GPIO_Port, _2_Pin, GPIO_PIN_SET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(_3_GPIO_Port, _3_Pin, GPIO_PIN_SET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(_4_GPIO_Port, _4_Pin, GPIO_PIN_SET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(_5_GPIO_Port, _5_Pin, GPIO_PIN_SET);
+		break;
+	case 6:
+		HAL_GPIO_WritePin(_6_GPIO_Port, _6_Pin, GPIO_PIN_SET);
+		break;
+	case 7:
+		HAL_GPIO_WritePin(_7_GPIO_Port, _7_Pin, GPIO_PIN_SET);
+		break;
+	case 8:
+		HAL_GPIO_WritePin(_8_GPIO_Port, _8_Pin, GPIO_PIN_SET);
+		break;
+	case 9:
+		HAL_GPIO_WritePin(_9_GPIO_Port, _9_Pin, GPIO_PIN_SET);
+		break;
+	case 10:
+		HAL_GPIO_WritePin(_10_GPIO_Port, _10_Pin, GPIO_PIN_SET);
+		break;
+	case 11:
+		HAL_GPIO_WritePin(_11_GPIO_Port, _11_Pin, GPIO_PIN_SET);
+		break;
+	default:
+		HAL_GPIO_WritePin(_11_GPIO_Port, _11_Pin, GPIO_PIN_SET);
+	}
+}
+
+void setAllClock() {
+	HAL_GPIO_WritePin(_0_GPIO_Port, _0_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_1_GPIO_Port, _1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_2_GPIO_Port, _2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_3_GPIO_Port, _3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_4_GPIO_Port, _4_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_5_GPIO_Port, _5_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_6_GPIO_Port, _6_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_7_GPIO_Port, _7_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_8_GPIO_Port, _8_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_9_GPIO_Port, _9_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_10_GPIO_Port, _10_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(_11_GPIO_Port, _11_Pin, GPIO_PIN_RESET);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -149,14 +208,14 @@ int main(void)
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
       int counter = 0;
-      clearAllClock();
+      setAllClock();
       while (1)
       {
       	if (counter>=12)	{
       		counter=0;
-      		clearAllClock();
+      		setAllClock();
       	}
-      	setNumberOnClock(counter);
+      	clearNumberOnClock(counter);
       	counter++;
       	HAL_Delay(1000);
       /* USER CODE END WHILE */
